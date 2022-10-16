@@ -11,511 +11,83 @@ server = Flask(__name__)
 logger = telebot.logger
 logger.setLevel(logging.DEBUG)
 
-
-
-
+ch = '@Freentrn'
 @bot.message_handler(commands=['start'])
-def run(message):
-	key = types.InlineKeyboardMarkup()
-	b2=types.InlineKeyboardButton(text='help', callback_data='package')
-	key.row_width = 1
-	key.add(b2)
-	first_name = message.from_user.first_name
-	bot.send_message(message.chat.id,text=f"<strong>Hi, {first_name}! My name is Brav. Click the Help button below. 👇</strong>",parse_mode='html',reply_markup=key)
+def start(message):
+ idd = message.from_user.id
+ url = f"https://api.telegram.org/bot{BOT_TOKEN}/getchatmember?chat_id={ch}&user_id={idd}"
+ req = requests.get(url)
+ if 5384214726 == int(idd):
+ 	bot.reply_to(message,text='''*أهلا بك عزيزي ألادمن ألاوامر️*''',parse_mode='MarkDown')
+ 	checkmember='Admin'
+ if 'member' in req.text:
+ 	checkmember='Member'
+ 	bot.reply_to(message,text='''*اهلا بك في بوت فحص البين الاول في التلكرام💵
+💀 وظيفه البوت اعطاء معلومات على البن 
+💀 المعلومات تشمل نوع البطاقه و قوتها و دولتها و هواي اشياء مفيده 💵
+⚠️ كل العليك هو ارسال البن و رح يعطيك معلوماته او ارسال فيزا كامله رح يستخرجلك البن و يعطيك معلومات كامله عليه ⚠️*''',parse_mode='MarkDown')
+ if 'left' in req.text:
+ 	checkmember='notmember'
+ 	key = types.InlineKeyboardMarkup()
+ 	b2=types.InlineKeyboardButton(text='أشترك ألان ✅', url='https://t.me/Freentrn')
+ 	key.row_width = 1
+ 	key.add(b2)
+ 	bot.reply_to(message,text=f'''*🚸| عذرا عزيزي
+🔰| عليك الاشتراك بقناة البوت لتتمكن من استخدامه
+
+- {ch}
+
+‼️| اشترك ثم ارسل /start️*''',parse_mode='MarkDown',reply_markup=key)
 @bot.message_handler(func= lambda m: True)
 def mess(message):
-	user = message.from_user.username
-	id = message.from_user.id
-	text = message.text
-	vip=requests.get(f'https://Iid.moahmedsalah.repl.co/check/?id={id}').text
-	if '/cly' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/csp' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cdy' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cho' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cso' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cri' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cdy' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/aup' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cyp' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/so' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/bri' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/ad' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/sho' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/str' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/ctr' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	
-	if '/cap' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cpp' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/cp' in text:
-		if vip in 'Premium':
-			print('Ok')
-		else:
-			bot.reply_to(message,text=f"<strong>@{user}, this gate is available only for subscribers.</strong>",parse_mode='html')
-	if '/addvip' in text:
-		if 5384214726 == id:
-			idadd = text.split(' ')[1]
-			add1 = requests.get(f'https://Iid.moahmedsalah.repl.co/add/?id={idadd}').text
-			bot.reply_to(message,f"<strong>{add1}️</strong>",parse_mode="html")
-		else:
-			bot.reply_to(message,f"<strong>Your Not Admin Bot️</strong>",parse_mode="html")
-	if '/status' in text:
-		bot.reply_to(message,"<strong>Online => ✅\nBot: @Pravebotcheckbot ♻️</strong>",parse_mode="html")
-	if '/sk' in text or '.sk' in text:
-		try:
-			sk = text.split(' ')[1]
-			send = requests.get(f'https://Opol.moahmedsalah.repl.co/sk/?sk={sk}&id={id}&user={user}').text
-			bot.reply_to(message,send,parse_mode="html")
-		except:
-			bot.reply_to(message,"<strong>Sk Error Format</strong>",parse_mode="html")
-	if '/bin' in text or '.bin' in text:
-		try:
-			bi = text.split(' ')[1]
-		except:
-			bot.reply_to(message,"<strong>NOT BIN</strong>",parse_mode="html")
-		try:
-			send= requests.get(f'https://Ch.moahmedsalah.repl.co/bin/?bin={bi}&id={id}&user={user}').text
-			bot.reply_to(message,send,parse_mode="html")
-		except:
-			pass
-	elif '/gen' in text:
-		for i in range(1):
-			cc = text.split(' ')[1]
-			send = requests.get(f'https://Chc.moahmedsalah.repl.co/gen/?cc={cc}&id={id}&user={user}').text
-			if 'Generator' in send:
-				bot.reply_to(message,send,parse_mode="html")
-			else:
-				pass
-		
-	elif '/ig' in text or '/infoig' in text:
-		usernameig = text.split(' ')[1]
-		send = requests.get(f'https://Loli.moahmedsalah.repl.co/ig/?userig={usernameig}&id={id}&user={user}').text
-		bot.reply_to(message,send,parse_mode="html")
-	elif '/cch' in text or '/cch' in text:
-		card = text.split(' ')[1]
-		try:
-			chh = requests.get(f'https://Hhb.moahmedsalah.repl.co/cch/?card={card}&id={id}&user={user}').text
-			bininfo = requests.get(f'https://Ch.moahmedsalah.repl.co/bin/?bin={card}&id={id}&user={user}').text
-			bot.reply_to(message,f"""
-			<strong>
-			INPUT: <code>{card}</code>
-			Reponse: <code> {chh} </code>	
-			Gateway: Stripe Auth  (CH){bininfo}
-			</strong>
-			""",parse_mode="html")
-		except:
-			bot.reply_to(message,"<strong>Error Try Again 30ś</strong>",parse_mode="html")
-	elif '/fack' in text or '/fackinfo' in text:
-		try:
-			send = geninfo(id,user)
-			bot.reply_to(message,send,parse_mode="html")
-		except:
-			bot.reply_to(message,"<strong>Error Try Again 30ś</strong>",parse_mode="html")
-	elif '/chfree' in text or '/chfree' in text:
-		card = text.split(' ')[1]
-		bininfo = bincc(card,id,user)
-		for i in range(1):
-			cc = card.split('|')[0]
-			exp=card.split('|')[1]
-			try:
-				exy=card.split('|')[2].split('0')[1]
-			except:
-				exy=card.split('|')[2]
-			ccv = card.split('|')[3]
-			getresonse = new_func(cc,ccv,exp,exy)
-			ms1 = (get_response_mchk(getresonse))
-			try:
-				mess = str(ms1[0]).split('-')[1]
-			except:
-				mess = ms1[0]
-			logo = ms1[1]
-			code = ms1[2]
-			bot.reply_to(message,f"""
-			<strong>
-			INPUT: <code>{card}</code>
-			Charging Card $Auth
-			Result Charge:<code>{logo}</code>
-			Reponse: <code> {mess} </code>
-			Reponse Code: <code> {code} </code>	
-			Gateway: STRIPE Gateway v1 (CH){bininfo}
-			</strong>
-			""",parse_mode="html")
-		
-		
-	else:
+	key = types.InlineKeyboardMarkup()
+	back=types.InlineKeyboardButton(text='Chaneel', url='https://t.me/Freentrn')
+	key.row_width = 1
+	key.add(back)
+	bin = message.text
+	try:
+		gbin = bin
+		x1=gbin[0]
+		x2=gbin[1]
+		x3=gbin[2]
+		x4=gbin[3]
+		x5=gbin[4]
+		x6=gbin[5]
+		bin=x1+x2+x3+x4+x5+x6
+	except:pass
+	try:
+		gbin = bin.split('|')[0]
+		x1=gbin[0]
+		x2=gbin[1]
+		x3=gbin[2]
+		x4=gbin[3]
+		x5=gbin[4]
+		x6=gbin[5]
+		bin=x1+x2+x3+x4+x5+x6
+	except:
 		pass
-@bot.callback_query_handler(func=lambda call: True)
-def qery(call):
-	if call.data == 'package':
-	  package(call.message)
-	if call.data == 'vip':
-	  vip(call.message)
-	if call.data == 'start':
-	  wordkey(call.message)
-	if call.data == '﻿AuthGates':
-		autthgates(call.message)
-	if call.data == 'Back':
-	  back(call.message)
-	#---------------gates------------
-	if call.data == 'Stripe':
-	  Stripe(call.message)
-	if call.data == 'Shopify':
-	  Shopify(call.message)
-	if call.data == 'paypal':
-		paypal(call.message)
-	if call.data == 'Braintree':
-	  Braintree(call.message)
-	if call.data == 'Square':
-	  Square(call.message)
-	if call.data == 'CyberSource':
-	  CyberSource(call.message)
-	if call.data == 'adyan':
-	  paypal(call.message)
-	if call.data == 'payseb':
-		payseb(call.message)
-	if call.data == 'lyra':
-	  lyra(call.message)
+	re=requests.get('https://lookup.binlist.net/'+bin).json()
+	scheme=re['scheme']
+	type = re['type']
+	brand=re['brand']
+	prepaid=re['prepaid']
+	country=re['country']['name']
+	emoji=re['country']['emoji']
+	bank=re['bank']['name']
+	currency=re['country']['currency']
+	bot.reply_to(message,text=f"""<strong>﻿
+𝒃𝒊𝒏 → <code>{bin}</code>	
 	
-	#-------------charge---------
-	if call.data == 'aStripe':
-	  aStripe(call.message)
-	if call.data == 'aShopify':
-	  aShopify(call.message)
-	if call.data == 'a3dScuore':
-		adScuore(call.message)
-	if call.data == 'aBraintree':
-	  aBraintree(call.message)
-	if call.data == 'aSquare':
-	  aSquare(call.message)
-	if call.data == 'apaypal':
-	  apaypal(call.message)
-	if call.data == 'a3dScuore':
-		adScuore(call.message)
-	if call.data == 'aCyberSource':
-	  aCyberSource(call.message)
-	if call.data == 'ChargeGates':
-	  chragegates(call.message)
+𝒔𝒄𝒉𝒆𝒎𝒆 → {scheme}
 
+𝒕𝒚𝒑𝒆  →  {type}
 
-def wordkey(message):
-	key = types.InlineKeyboardMarkup()
-	b3=types.InlineKeyboardButton(text='↩️', callback_data='package')
-	key.row_width = 2
-	key.add(b3)
-	wkey="""
-	<strong>
-	List Key => Free	
-	
-	Key => /cch => Check Strip Auth
-	
-	Key => /fack & /fackinfo = Fack Info
-	
-	Key => /gen Genrate cc with bin
-	
-	Key => /sk Key Check Sk 
-	  
-	Key => /bin & .bin Check Bin Info
-	
-	Key => /ig & /iginfo Get Info Ig
-	
-	Key => /status Check Bot Online 
- 
-	</strong>"""
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=wkey,parse_mode="html",reply_markup=key)
-def back(message):
-	key = types.InlineKeyboardMarkup()
-	b2=types.InlineKeyboardButton(text='help', callback_data='package')
-	key.row_width = 1
-	key.add(b2)
-	mk = message.from_user.id
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"<strong>Hi, Is Barv! My name is Brav. Click the Help button below. 👇</strong>",parse_mode='html',reply_markup=key)
+𝒑𝒓𝒆𝒑𝒂𝒊𝒅  → {prepaid}
 
-def vip(message):
-	id = message.from_user.id
-	if 'Premium' in 'Premium':
-		key = types.InlineKeyboardMarkup()
-		b2=types.InlineKeyboardButton(text='﻿Auth Gates', callback_data='﻿AuthGates')
-		b20=types.InlineKeyboardButton(text='Back', callback_data='Back')
-		key.row_width = 1
-		key.add(b2,b20)
-		bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"<strong>Welcome Vip\nYour Vip\nID ({id}) </strong>",parse_mode="html",reply_markup=key)
-	else:
-		key = types.InlineKeyboardMarkup()
-		b2=types.InlineKeyboardButton(text='Back', callback_data='Back')
-		key.row_width = 2
-		key.add(b2)
-		bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text="<strong>Subscribe Bot Price ⬇️\n\n7Day => 10$\n\n30Day => 30$\n\nSoruce => 250$\n\nSubscibe => @AO_SaLah</strong>",parse_mode="html",reply_markup=key)
-def autthgates(message):
-	id = message.from_user.id
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='package')
-	astrip=types.InlineKeyboardButton(text='Stripe', callback_data='aStripe')
-	asho=types.InlineKeyboardButton(text='Shopify', callback_data='aShopify')
-	
-	aBraintree=types.InlineKeyboardButton(text='Braintree', callback_data='aBraintree')
-	aSquare=types.InlineKeyboardButton(text='Square', callback_data='aSquare')
-	apaypal=types.InlineKeyboardButton(text='PayPal Pro', callback_data='apaypal')
-	aCyberSource=types.InlineKeyboardButton(text='CyberSource', callback_data='aCyberSource')
-	key.row_width = 1
-	key.add(aBraintree)
-	key.row_width = 2
-	key.add(asho,apaypal)
-	key.row_width = 1
-	key.add(aCyberSource)
-	key.row_width = 2
-	key.add(astrip,aSquare)
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿Auth Gates
-↳ only verifies if the card is valid and active, but does not charge it.
+𝒄𝒐𝒖𝒏𝒕𝒓𝒚 → {country} {emoji} {currency}
 
-Format: [command] XXXXXXXXXXXXXXXX|MM|YYYY|CVV
-Example: /ch 4647331155846215|11|2024|630</strong>""",parse_mode="html",reply_markup=key)
-
-def package(message):
-	key = types.InlineKeyboardMarkup()
-	b2=types.InlineKeyboardButton(text='Auth Gates', callback_data='﻿AuthGates')
-	b1=types.InlineKeyboardButton(text='Chrage Gates', callback_data='ChargeGates')
-	b0=types.InlineKeyboardButton(text='Free Comands', callback_data='start')
-	b00=types.InlineKeyboardButton(text='↩️', callback_data='Back')
-	key.row_width = 2
-	key.add(b2,b1)
-	key.row_width = 1
-	key.add(b0)
-	key.row_width = 1
-	key.add(b00)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>🤖 Bot Status ⇾ Operational ✅
-   
-To use <a href="https://telegram.dog/Pravebotcheckbot">Brav</a> in your group, you must set it as admin.</strong>""",parse_mode="html",reply_markup=key)
-def chragegates(message):
-	id = message.from_user.id
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='package')
-	strip=types.InlineKeyboardButton(text='Stripe', callback_data='Stripe')
-	sho=types.InlineKeyboardButton(text='Shopify', callback_data='Shopify')
-	
-	Braintree=types.InlineKeyboardButton(text='Braintree', callback_data='Braintree')
-	Square=types.InlineKeyboardButton(text='Square', callback_data='Square')
-	paypal=types.InlineKeyboardButton(text='PayPal Pro', callback_data='paypal')
-	CyberSource=types.InlineKeyboardButton(text='CyberSource', callback_data='CyberSource')
-	Adyan=types.InlineKeyboardButton(text='Adyan', callback_data='adyan')
-	payseb=types.InlineKeyboardButton(text='payseb', callback_data='payseb')
-	lyra=types.InlineKeyboardButton(text='Lyra', callback_data='lyra')
-	key.row_width = 1
-	key.add(Braintree)
-	key.row_width = 2
-	key.add(sho,paypal)
-	key.row_width = 1
-	key.add(CyberSource)
-	key.row_width = 2
-	key.add(strip,Square)
-	key.row_width = 1
-	key.add(lyra)
-	key.row_width = 2
-	key.add(Adyan,payseb)
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿Charge Gates
-↳ will charge the card with specific amount.
-
-For custom amount charge, type the amount after the space at the end of the CC.
-
-Example 1: /cst 4647331155846215|11|2024|630
-Example 2: /cpp 4647331155846215|11|2024|630 20
-Charge amount in Example 2 is $15</strong>""",parse_mode="html",reply_markup=key)
-def aStripe(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/str
-  ↳ ON ✅ </strong>""",parse_mode="html",reply_markup=key)
-def apaypal(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/aup
-  ↳ OFF ⚠️ </strong>""",parse_mode="html",reply_markup=key)
-def aCyberSource(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cyp
-  ↳ OFF ⚠️ </strong>""",parse_mode="html",reply_markup=key)
- 
-def aSquare(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/so
-  ↳ OFF ⚠️ </strong>""",parse_mode="html",reply_markup=key)
-def aBraintree(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/bri
-  ↳ ON ✅ </strong>""",parse_mode="html",reply_markup=key)
-def adScuore(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/ad
-  ↳ OFF ⚠️ </strong>""",parse_mode="html",reply_markup=key)
-def aShopify(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='﻿AuthGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/sho
-  ↳ ON ✅ </strong>""",parse_mode="html",reply_markup=key)
- #-------======Chargefounc========-----
-def Stripe(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/ctr
-  ↳ ON ✅ 
-  ↳ $1 Charge</strong>""",parse_mode="html",reply_markup=key)
-def paypal(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cap
-  ↳ OFF ⚠️ 
-  ↳ $10 Charge</strong>""",parse_mode="html",reply_markup=key)
-def CyberSource(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cp
-  ↳ OFF ⚠️ 
-  ↳ $20 Charge</strong>""",parse_mode="html",reply_markup=key)
- 
-def Square(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cso
-  ↳ OFF ⚠️ 
-  ↳ $25 Charge</strong>""",parse_mode="html",reply_markup=key)
-def Braintree(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cri
-  ↳ ON ✅ 
-  ↳ $12 Charge</strong>""",parse_mode="html",reply_markup=key)
-def adyan(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cdy
-  ↳ OFF ⚠️ 
-  ↳ $5 Charge</strong>""",parse_mode="html",reply_markup=key)
-def Shopify(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cho
-  ↳ ON ✅ 
-  ↳ $15 Charge</strong>""",parse_mode="html",reply_markup=key)
-def lyra(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/cly
-  ↳ ON ✅ 
-  ↳ $20 Charge</strong>""",parse_mode="html",reply_markup=key)
-def payseb(message):
-	key = types.InlineKeyboardMarkup()
-	back=types.InlineKeyboardButton(text='↩️', callback_data='ChargeGates')
-	key.row_width = 1
-	key.add(back)
-	bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""<strong>﻿/csp
-  ↳ ON ✅ 
-  ↳ $50 Charge
+𝒃𝒂𝒏𝒌 𝒏𝒂𝒎𝒆 → {bank}
   </strong>""",parse_mode="html",reply_markup=key)
-
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
